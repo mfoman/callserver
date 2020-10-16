@@ -1,5 +1,6 @@
 const nedb = require('nedb')
 const ax = require('axios')
+const callbackUrl = 'https://callserver.mfoman.vercel.app/api/oauthCallback'
 
 module.exports = (req, res) => {
     const respons = JSON.stringify({
@@ -24,12 +25,16 @@ async function saveTokens(tokens) {
 }
 
 async function authGrant(code) {
-    console.log(code)
-
-    await ax.post('https://api.onpay.io/oauth2/access_token', {
+    ax.post('https://api.onpay.io/oauth2/access_token', {
         grant_type: 'authorization_code',
         code,
-        redirect_uri: '/api/oauthCallback',
+        redirect_uri: callbackUrl,
         client_id: 'Test',
     })
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
 }
