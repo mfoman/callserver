@@ -15,7 +15,7 @@
                 'user=Arron; expires=Thu, 1 Jan 3001 12:00:00 UTC; path=/; SameSite=Lax'
 
             function loginOnpay() {
-                const callbackUrl = 'https://callserver-401rt4lho.vercel.app/api/oauthCallback'
+                const callbackUrl = 'https://callserver-6rf64229y.vercel.app/api/oauthCallback'
                 const authUrl = `https://manage.onpay.io/3020078873755216/oauth2/authorize?response_type=code&state=&client_id=Test&scope=full&redirect_uri=${callbackUrl}`
                 window.open(
                     authUrl,
