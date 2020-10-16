@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+
+        <button onclick="loginOnpay()">Authenticate</button>
+
+        <script defer>
+            document.cookie =
+                'user=Arron; expires=Thu, 1 Jan 3001 12:00:00 UTC; path=/; SameSite=Lax'
+
+            function loginOnpay() {
+                const authUrl = "https://manage.onpay.io/3020078873755216/oauth2/authorize?response_type=code&state=&client_id=Test&scope=full&redirect_uri=https%3A%2F%2Fcallserver-o28ybeal4.vercel.app%2Fapi%2FoauthCallback"
+                window.open(
+                    authUrl,
+                    '_blank',
+                    'location=yes,height=570,width=520,scrollbars=yes,status=yes'
+                )
+            }
+        </script>
+    </body>
+</html>
